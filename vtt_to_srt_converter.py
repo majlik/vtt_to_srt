@@ -21,8 +21,12 @@ with open('new.srt', 'w') as f:
             # add after --> another 00:
             line = line.replace("--> ", "--> 00:")
             f.write(line)
+        # replace '.' to ',' within timestamp
+        if line.count(':') > 1:
+            line = line.replace(".", ",")
+            f.write(line)
+        # other lines with text just propagate
         if update == False:
-            # maybe you need to convert '.' to ',' from timestamp
             f.write(line)
 
 print("finished")
